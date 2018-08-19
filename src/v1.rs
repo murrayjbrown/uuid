@@ -34,13 +34,13 @@ impl Uuid {
     /// 1. The *NodeId* is unique for this process,
     /// 2. The *Context* is shared across all threads which are generating v1
     ///    [`Uuid`]s,
-    /// 3. The [`UuidClockSequence`] implementation reliably returns unique
-    ///    clock sequences (this crate provides [`UuidV1Context`] for this
-    ///    purpose. However you can create your own [`UuidClockSequence`]
+    /// 3. The [`ClockSequence`] implementation reliably returns unique
+    ///    clock sequences (this crate provides [`Context`] for this
+    ///    purpose. However you can create your own [`ClockSequence`]
     ///    implementation, if [`Context`] does not meet your needs).
     ///
     /// The NodeID must be exactly 6 bytes long. If the NodeID is not a valid
-    /// length this will return a [`ParseError`]`::InvalidLength`.
+    /// length this will return a [`BytesError`]`::InvalidLength`.
     ///
     /// The function is not guaranteed to produce monotonically increasing
     /// values however.  There is a slight possibility that two successive
@@ -75,9 +75,9 @@ impl Uuid {
     /// }
     /// ```
     ///
-    /// [`ParseError`]: ../enum.ParseError.html
+    /// [`BytesError`]: ../enum.BytesError.html
     /// [`Uuid`]: ../struct.Uuid.html
-    /// [`UuidClockSequence`]: struct.UuidClockSequence.html
+    /// [`UuidClockSequence`]: struct.ClockSequence.html
     /// [`Context`]: struct.Context.html
     pub fn new_v1<T>(
         context: &T,

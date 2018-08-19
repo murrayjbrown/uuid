@@ -2,7 +2,7 @@ use prelude::*;
 use sha1;
 
 impl Uuid {
-    /// Creates a UUID using a name from a namespace, based on the SHA-1 hash.
+    /// Creates a [`Uuid`] using a name from a namespace, based on the SHA-1 hash.
     ///
     /// A number of namespaces are available as constants in this crate:
     ///
@@ -18,6 +18,7 @@ impl Uuid {
     /// [`NAMESPACE_OID`]: struct.Uuid.html#associatedconst.NAMESPACE_OID
     /// [`NAMESPACE_URL`]: struct.Uuid.html#associatedconst.NAMESPACE_URL
     /// [`NAMESPACE_X500`]: struct.Uuid.html#associatedconst.NAMESPACE_X500
+    /// [`Uuid`]: ../struct.Uuid.html
     pub fn new_v5(namespace: &Uuid, name: &[u8]) -> Uuid {
         let mut hash = sha1::Sha1::new();
 
